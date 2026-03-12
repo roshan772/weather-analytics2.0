@@ -1,103 +1,158 @@
-# AtmosIQ(Weather Comfort Ranking App) 
+# AtmosIQ (Weather Comfort Ranking App)
 
-A full-stack weather application that fetches live weather data from the **OpenWeather API**, calculates a **Comfort Index**, and ranks cities from most comfortable to least comfortable based on current weather conditions.
+AtmosIQ is a full-stack weather application that retrieves real-time weather data from the OpenWeather API, calculates a Comfort Index, and ranks cities based on overall weather comfort conditions.
 
-The application consists of:
+The application uses a Node.js backend and a React frontend to fetch, process, and display weather information in a user-friendly interface.
 
-* **Backend:** Node.js + Express + TypeScript
-* **Frontend:** React + Vite + TailwindCSS
-* **Weather API:** OpenWeather
-* **Caching:** In-memory cache using a `Map` with TTL
+## Tech Stack
 
----
+Backend
 
-# 📸 Application Screenshots
+* Node.js
+* Express
+* TypeScript
+* Axios
+* OpenWeather API
 
-###  Application Home Page
+Frontend
 
-![Home Screenshot](./src/assets/home.png)
+* React
+* Vite
+* TailwindCSS
+* React Router
 
-###  Login
+Caching
 
-![Login Screenshot](./src/assets/login.png)
-
-###  Logged In User Details
-
-![Logged In User Screenshot](./src/assets/Logged%20In.png)
-
-###  DashBoard With Score
-
-![API Screenshot](./src/assets/Dashboard.png)
-
-###  Comfort Score Visualization
-
-![Comfort Score Screenshot](./src/assets/comScore.png)
-
-
+* In-memory caching using a JavaScript Map with TTL
 
 ---
 
-#  Features
+# Application Screenshots
 
-* Fetches real-time weather data from OpenWeather
-* Converts temperatures from **Kelvin → Celsius**
-* Calculates a **Comfort Index score (0-100)**
-* Ranks cities by comfort level
-* Uses **caching** to reduce API requests
-* Full-stack architecture with modern tooling
-* Clean UI built with **React + Tailwind**
+## Application Home Page
+
+![Home Screenshot](./client/src/assets/home.png)
+
+## Login
+
+![Login Screenshot](./client/src/assets/login.png)
+
+## Logged In User Details
+
+![Logged In User Screenshot](./client/src/assets/Logged%20In.png)
+
+## Dashboard With Comfort Score
+
+![Dashboard Screenshot](./client/src/assets/Dashboard.png)
+
+## Comfort Score Visualization
+
+![Comfort Score Screenshot](./client/src/assets/comScore.png)
 
 ---
 
-#  Project Architecture
+# Features
+
+* Retrieves real-time weather data from OpenWeather API
+* Converts temperature from Kelvin to Celsius
+* Calculates a Comfort Index score between 0 and 100
+* Ranks cities by weather comfort
+* Implements caching to reduce repeated API requests
+* Modular backend architecture using Express and TypeScript
+* Modern frontend UI built with React and TailwindCSS
+
+---
+
+# Project Structure
+
+```
+weather-analytics
+│
+├── client
+│   ├── public
+│   ├── src
+│   │   ├── app
+│   │   ├── assets
+│   │   ├── components
+│   │   ├── features
+│   │   ├── layouts
+│   │   ├── pages
+│   │   ├── services
+│   │   ├── styles
+│   │   ├── utils
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   └── index.css
+│   │
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+│
+├── server
+│   ├── src
+│   │   ├── config
+│   │   ├── controllers
+│   │   ├── data
+│   │   ├── middleware
+│   │   ├── routes
+│   │   ├── services
+│   │   ├── types
+│   │   ├── utils
+│   │   ├── app.ts
+│   │   └── server.ts
+│   │
+│   ├── package.json
+│   └── tsconfig.json
+│
+└── README.md
 ```
 
 ---
 
-#  Setup Instructions
+# Setup Instructions
 
-##  Clone the repository
+## Clone the Repository
 
 ```
-git clone 
-cd weather-comfort-ranking
+git clone https://github.com/your-username/weather-analytics.git
+cd weather-analytics
 ```
 
 ---
 
-# 🖥 Backend Setup
+# Backend Setup
 
-Navigate to the server folder:
+Navigate to the server directory.
 
 ```
 cd server
 ```
 
-Install dependencies:
+Install dependencies.
 
 ```
 npm install
 ```
 
-Create a `.env` file:
+Create a `.env` file inside the server folder.
 
 ```
-
+OPENWEATHER_API_KEY=your_openweather_api_key
 ```
 
-Run the backend:
+Run the development server.
 
 ```
 npm run dev
 ```
 
-Build the project:
+Build the project.
 
 ```
 npm run build
 ```
 
-Start production server:
+Run the production server.
 
 ```
 npm start
@@ -105,33 +160,33 @@ npm start
 
 ---
 
-#  Frontend Setup
+# Frontend Setup
 
-Open a new terminal and go to the client folder:
+Open a new terminal and navigate to the client folder.
 
 ```
 cd client
 ```
 
-Install dependencies:
+Install dependencies.
 
 ```
 npm install
 ```
 
-Run the frontend:
+Run the development server.
 
 ```
 npm run dev
 ```
 
-Build frontend:
+Build the frontend.
 
 ```
 npm run build
 ```
 
-Preview production build:
+Preview the production build.
 
 ```
 npm run preview
@@ -139,29 +194,29 @@ npm run preview
 
 ---
 
-#  Comfort Index Formula
+# Comfort Index Formula
 
-The application calculates a **Comfort Score (0-100)** using four weather factors:
+The application calculates a Comfort Score between 0 and 100 based on four weather variables.
 
 * Temperature
 * Humidity
 * Wind Speed
-* Cloud Cover
+* Cloud Coverage
 
-The formula evaluates how close the current weather is to ideal conditions.
+The score measures how close the current weather is to ideal outdoor comfort conditions.
 
-### Ideal conditions used
+## Ideal Weather Conditions
 
-| Variable    | Ideal Value |
-| ----------- | ----------- |
-| Temperature | 22°C        |
-| Humidity    | 50%         |
-| Wind Speed  | 3 m/s       |
-| Cloud Cover | 30%         |
+| Variable       | Ideal Value |
+| -------------- | ----------- |
+| Temperature    | 22°C        |
+| Humidity       | 50%         |
+| Wind Speed     | 3 m/s       |
+| Cloud Coverage | 30%         |
 
 ---
 
-## Formula Implementation
+# Formula Implementation
 
 ```
 tempScore = 100 - Math.abs(tempC - 22) * 4
@@ -176,196 +231,116 @@ comfortScore =
   cloudScore * 0.15
 ```
 
-The result is rounded and clamped between **0 and 100**.
+The final result is rounded and clamped between 0 and 100.
 
 ---
 
-#  Reasoning Behind Variable Weights
+# Reasoning Behind Variable Weights
 
-### Temperature — **40%**
+Temperature (40%)
 
-Temperature has the largest effect on comfort. Extreme heat or cold immediately reduces comfort regardless of other conditions.
+Temperature has the strongest effect on outdoor comfort. Extremely hot or cold weather reduces comfort regardless of other weather factors.
 
-### Humidity — **25%**
+Humidity (25%)
 
-Humidity strongly affects how temperature feels to humans. High humidity makes heat feel worse, while low humidity can feel dry.
+Humidity significantly affects perceived temperature. High humidity can make warm weather feel more intense.
 
-### Wind Speed — **20%**
+Wind Speed (20%)
 
-A gentle breeze improves comfort, but strong winds can become uncomfortable.
+A moderate breeze improves comfort, but strong winds can make conditions uncomfortable.
 
-### Cloud Cover — **15%**
+Cloud Coverage (15%)
 
-Cloud cover affects sunlight exposure. Moderate cloud cover often improves comfort by reducing direct sunlight.
-
----
-
-#  Trade-offs Considered
-
-### Simplicity vs Scientific Accuracy
-
-The formula is intentionally simple and easy to understand. More complex meteorological indices exist, but they add complexity and reduce readability.
-
-### Performance vs Data Freshness
-
-Caching improves performance and reduces API usage, but users may temporarily see slightly outdated data.
-
-### Sequential vs Parallel API Requests
-
-Weather data is fetched sequentially for simplicity. Parallel requests could improve speed but increase implementation complexity.
-
-### Current Weather vs Forecast
-
-The system uses current weather data instead of forecast data for faster responses and simpler ranking.
+Cloud coverage reduces direct sunlight exposure and slightly improves comfort, but its impact is smaller compared to other factors.
 
 ---
 
-#  Cache Design Explanation
+# Trade-offs Considered
 
-The system uses a **simple in-memory cache** implemented with a JavaScript `Map`.
+Simplicity vs Accuracy
 
-### Cache Structure
+The formula is intentionally simple so it is easy to understand and maintain. More advanced meteorological formulas exist but would increase complexity.
+
+Performance vs Data Freshness
+
+Caching improves performance and reduces API calls but may temporarily return slightly outdated weather data.
+
+Sequential vs Parallel Requests
+
+Weather API requests are currently processed sequentially for simplicity. Parallel processing could improve performance.
+
+Current Weather vs Forecast
+
+The application uses current weather conditions rather than forecasts to keep the system simple and responsive.
+
+---
+
+# Cache Design
+
+The application uses an in-memory cache implemented with a JavaScript Map.
+
+## Cache Structure
 
 ```
 type CacheEntry<T> = {
-  data: T;
-  expiresAt: number;
-};
-```
-
-### Cache Storage
-
-```
-const cache = new Map<string, CacheEntry<unknown>>();
-```
-
-### Cache Functions
-
-* `getCache(key)` → retrieves cached data
-* `setCache(key, data, ttl)` → stores data with expiration
-* `getCacheKeys()` → returns active keys
-* `clearCache()` → removes all entries
-
-### Expiration Logic
-
-When retrieving data:
-
-1. Check if cache entry exists
-2. Verify if it has expired
-3. Remove expired entries automatically
-4. Return cached data if valid
-
-### Why this approach?
-
-This design was chosen because it is:
-
-* Simple to implement
-* Fast for read/write operations
-* Ideal for a single-instance server
-* Reduces unnecessary external API calls
-
----
-
-#  Example Data Flow
-
-1️⃣ Client requests ranked weather data
-2️⃣ Backend checks cache
-3️⃣ If cached data exists → return it
-4️⃣ If not cached:
-
-* Fetch weather data from OpenWeather
-* Convert temperature Kelvin → Celsius
-* Calculate Comfort Score
-* Rank cities
-* Store results in cache
-* Return response
-
----
-
-#  Known Limitations
-
-### 1. In-memory cache resets on restart
-
-The cache is stored in memory and disappears if the server restarts.
-
-### 2. Not distributed
-
-The cache works only for a single server instance. For scaling, Redis or Memcached would be better.
-
-### 3. Comfort score is heuristic
-
-The formula is designed for ranking convenience rather than scientific accuracy.
-
-### 4. Sequential API calls
-
-Weather requests are currently processed sequentially, which may increase response time with many cities.
-
-### 5. Limited weather variables
-
-The model does not include factors like:
-
-* UV index
-* Rain intensity
-* Air quality
-* "Feels like" temperature
-
----
-
-# 🌡 Temperature Conversion
-
-OpenWeather returns temperature in **Kelvin** by default.
-
-The application converts it to Celsius using:
-
-```
-export function kelvinToCelsius(kelvin: number): number {
-  return Number((kelvin - 273.15).toFixed(1));
+  data: T
+  expiresAt: number
 }
 ```
 
-This keeps the values user-friendly for display and calculations.
+## Cache Storage
+
+```
+const cache = new Map<string, CacheEntry<unknown>>()
+```
+
+## Cache Functions
+
+* getCache(key)
+* setCache(key, data, ttl)
+* getCacheKeys()
+* clearCache()
+
+The cache stores weather results temporarily to reduce unnecessary API calls.
 
 ---
 
-#  Backend Dependencies
+# Temperature Conversion
 
-* express
-* axios
-* dotenv
-* cors
-* morgan
-* typescript
-* ts-node-dev
+OpenWeather returns temperature values in Kelvin.
 
----
+The application converts Kelvin to Celsius using the following function.
 
-#  Frontend Dependencies
+```
+export function kelvinToCelsius(kelvin: number): number {
+  return Number((kelvin - 273.15).toFixed(1))
+}
+```
 
-* react
-* react-dom
-* vite
-* tailwindcss
-* react-router-dom
-* lucide-react
-* auth0-react
+This ensures temperature values are easier to display and calculate.
 
 ---
 
-#  Future Improvements
+# Known Limitations
 
-* Replace in-memory cache with **Redis**
-* Fetch weather data using **Promise.all for parallel requests**
-* Include **weather forecast ranking**
-* Add **UV index and air quality**
-* Allow configurable comfort score weights
-* Improve TypeScript typing for API responses
-
----
-
-
+* In-memory cache resets when the server restarts
+* Cache is not distributed and only works for a single server instance
+* Comfort score is a heuristic approximation
+* Weather API requests are sequential
+* Additional weather factors such as UV index and air quality are not included
 
 ---
 
-#  Author
+# Future Improvements
 
-Developed as part of a weather ranking system demonstrating API integration, caching strategies, and comfort score modeling using modern web technologies.
+* Replace in-memory cache with Redis
+* Implement parallel API requests using Promise.all
+* Add forecast-based weather comfort predictions
+* Include UV index and air quality data
+* Allow dynamic adjustment of comfort score weights
+
+---
+
+# Author
+
+Developed as part of a weather analytics system demonstrating API integration, caching strategies, and weather comfort ranking using modern full-stack technologies.
