@@ -114,7 +114,7 @@ weather-analytics
 ## Clone the Repository
 
 ```
-git clone https://github.com/your-username/weather-analytics.git
+git clone https://github.com/roshan772/weather-analytics2.0.git
 cd weather-analytics
 ```
 
