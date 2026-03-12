@@ -137,7 +137,7 @@ npm install
 Create a `.env` file inside the server folder.
 
 ```
-OPENWEATHER_API_KEY=your_openweather_api_key
+OPENWEATHER_API_KEY=""
 ```
 
 Run the development server.
