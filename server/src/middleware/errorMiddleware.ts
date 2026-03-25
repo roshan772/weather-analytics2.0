@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-
+//handle server error 
 export function errorMiddleware(
   error: unknown,
   _req: Request,

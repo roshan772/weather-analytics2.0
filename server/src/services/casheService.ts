@@ -1,3 +1,4 @@
+//in memory cache implementation for weather data
 type CacheEntry<T> = {
   data: T;
   expiresAt: number;

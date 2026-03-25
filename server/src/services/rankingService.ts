@@ -8,3 +8,4 @@ export function rankWeatherData(items: WeatherData[]): WeatherData[] {
       rank: index + 1,
     }));
 }
+//sort results and adds rank

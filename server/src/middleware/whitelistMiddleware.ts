@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-const allowedUsers = ["careers@fidenz.com"];
+const allowedUsers = ["careers@fidenz.com"];//allows only specific user
 
 export function whitelistMiddleware(
   req: Request,

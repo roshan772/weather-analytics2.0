@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { getWeather } from "../controllers/weatherController";
-
+//wheather endpoint routing
 const router = Router();
 
 router.get("/", getWeather);

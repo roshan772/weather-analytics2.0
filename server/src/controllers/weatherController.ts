@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { getRankedWeather } from "../services/weatherService";
-
+//handle weather api
 export async function getWeather(
   _req: Request,
   res: Response,

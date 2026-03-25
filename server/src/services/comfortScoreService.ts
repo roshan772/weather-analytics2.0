@@ -23,3 +23,4 @@ export function calculateComfortScore(weather: any): number {
 
   return clamp(Math.round(score), 0, 100); //87.05 → 87
 }
+//calculate wheather comport score
